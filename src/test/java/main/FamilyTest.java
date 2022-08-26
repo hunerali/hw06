@@ -24,6 +24,26 @@ class FamilyTest {
        assertNotEquals(test,ElibeyliFamily);
 
    }
+   @Test
+    void testCountFamily(){
+       assertEquals(2,ElibeyliFamily.countFamily());
+   }
+    @Test
+    void testAddChild(){
+        Human child1 = new Human("Nadir", "Elibeyli", 200, 98,
+                new String[][]{{DayOfWeek.MONDAY.name(), "go to course"}}, ElibeyliFamily);
+        ElibeyliFamily.addChild(child1);
+        assertEquals(1,ElibeyliFamily.getChildren().length);
+    }
+    @Test
+    void testDeleteChild(){
+        Human child1 = new Human("Nadir", "Elibeyli", 200, 98,
+                new String[][]{{DayOfWeek.MONDAY.name(), "go to course"}}, ElibeyliFamily);
+        ElibeyliFamily.addChild(child1);
+        ElibeyliFamily.deleteChild(0);
+        assertEquals(0,ElibeyliFamily.getChildren().length);
+
+    }
 
 
 
