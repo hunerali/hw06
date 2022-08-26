@@ -45,6 +45,15 @@ class FamilyTest {
 
     }
 
+    @Test
+    void testDeleteChildFakeIndex(){
+        Human child1 = new Human("Nadir", "Elibeyli", 200, 98,
+                new String[][]{{DayOfWeek.MONDAY.name(), "go to course"}}, ElibeyliFamily);
+        ElibeyliFamily.addChild(child1);
+        ElibeyliFamily.deleteChild(4);
+        assertEquals(1,ElibeyliFamily.getChildren().length);
+
+    }
 
 
 }

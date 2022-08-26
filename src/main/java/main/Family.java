@@ -32,45 +32,29 @@ public class Family {
     }
 
     public void deleteChild(int index) {
-        if (index > getChildren().length - 1) {
-            getChildren();
+        if (getChildren().length <= index || index < 0) {
+            System.out.println("Delete operation failed");
         } else {
-            Human[] children = new Human[getChildren().length - 1];
-            if (children.length == 0) {
-                children = new Human[0];
-            } else {
-                for (int i = 0, j = 0; i < getChildren().length; i++) {
-                    if (i == index) continue;
-                    children[j++] = getChildren()[i];
+            Human[] tempArray = new Human[getChildren().length - 1];
+            int i = 0;
+            int j = 0;
+            while (i < getChildren().length) {
+                if (i != index) {
+                    tempArray[j++] = children[i];
                 }
+                i++;
             }
-            setChildren(children);
+            children = tempArray;
         }
     }
 
+
     public int countFamily() {
+
         return 2 + getChildren().length;
     }
 
-    //Advanced complexity implementation -- deleting child
-    public void deleteChild(Human child) {
-        if (child != null) {
-            for (int i = 0; i < getChildren().length; i++) {
-                if (child.equals(getChildren()[i])) {
-                    Human[] children = new Human[getChildren().length - 1];
-                    for (int k = 0, j = 0; k < getChildren().length; k++) {
-                        if (getChildren()[k].getName().equals(child.getName())) continue;
-                        children[j++] = getChildren()[k];
-                    }
-                    setChildren(children);
-                } else {
-                    getChildren();
-                }
-            }
-        } else {
-            getChildren();
-        }
-    }
+
 
 
     public void describePet() {
